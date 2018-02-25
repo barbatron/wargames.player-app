@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-import apiKeys from '../../secrets/apiKeys.json';
+import apiKeys from './secrets/apiKeys.json';
 
 const apiKey = apiKeys.googleGeolocation;
 
