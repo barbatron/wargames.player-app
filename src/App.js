@@ -8,6 +8,7 @@ import {geolocate} from './util/geolocate';
 
 
 
+
 class App extends Component {
   constructor(...args) {
     super(...args);
@@ -29,7 +30,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
           <h1 className="App-title">Welcome to React</h1>
