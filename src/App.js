@@ -2,30 +2,25 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css'
 
-import Location from './Location';
+import Position from './Position';
 
-import {geolocate} from './util/geolocate';
-
-
-
+import {createObservable} from './util/geolocate';
 
 class App extends Component {
   constructor(...args) {
     super(...args);
-    this.state = {location: null};
+    this.state = {position: null};
     this.renderLocation = this.renderLocation.bind(this);
   }
 
   componentDidMount() {
-    geolocate().then(location => {
-      this.setState({location: location});
-    });
+    createObservable().subscribe(position => this.setState({position}))
   }
 
   renderLocation() {
-    return this.state.location
-      ? <Location location={this.state.location}/>
-      : <div>Loading location</div>;
+    return this.state.position
+      ? <Position position={this.state.position}/>
+      : <div>Positioning...</div>;
   }
 
   render() {
