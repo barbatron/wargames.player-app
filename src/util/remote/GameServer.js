@@ -17,3 +17,5 @@ class WsConnection {
     this.ws.send(msg);
   }
 }
+
+export {WsConnection};

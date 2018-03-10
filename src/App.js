@@ -6,6 +6,8 @@ import Position from './Position';
 
 import {createObservable} from './util/geolocate';
 
+import googleMapsApi from 'load-google-maps-api';
+
 class App extends Component {
   constructor(...args) {
     super(...args);
@@ -14,7 +16,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    createObservable().subscribe(position => this.setState({position}))
+    this.subscription = createObservable().subscribe(position => this.setState({position}));
+  }
+
+  componentWillUnmount() {
+    this.subscription.unsubscribe();
   }
 
   renderLocation() {

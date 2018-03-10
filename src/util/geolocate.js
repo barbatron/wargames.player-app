@@ -17,11 +17,15 @@ const geolocate = async () => new Promise((resolve) => {
 
 const createObservable = positionOptions => {
   const source = new Observable(observer => {
+    console.log('Initiating watch position');
     const watchId = navigator.geolocation.watchPosition(
       position => observer.next(position),
       err => observer.error(err),
       positionOptions);
-    return () => navigator.geolocation.clearWatch(watchId);
+    return () => {
+      console.log('Clearing watch position');
+      navigator.geolocation.clearWatch(watchId);
+    };
   });
   return source;
 };
